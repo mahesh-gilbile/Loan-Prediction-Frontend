@@ -1,0 +1,10 @@
+*{
+    background-color: lightblue;
+}
+
+footer{
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    width:100%;
+}

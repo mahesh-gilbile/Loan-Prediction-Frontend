@@ -1,0 +1,84 @@
+.container{
+    padding:0px;
+    margin: 0px;
+}
+
+.row{
+    padding:0px;
+    margin: 0px;
+}
+
+mat-card{
+    width:97%;
+    padding:0px;
+    margin:20px 20px 0px 20px;
+}
+
+h1{
+    margin:auto;
+    padding:20px;
+    font-size: 35px;
+}
+
+table{
+    width:99%;
+    margin:25px;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+table tr th,td{
+    padding-top:30px;
+    padding-bottom: 30px;
+}
+
+.divChart{
+    display:block;
+    width:90%;
+    height:100px;
+}
+
+
+@media only screen and (max-width : 981px)
+{
+    h1{
+        margin:auto;
+        padding:20px;
+        font-size: 17px;
+    }
+
+    table{
+        width:90%;
+        margin:5px;
+        font-size: 9px;
+        font-weight: 100;
+    }
+    
+    table tr th,td{
+        padding-top:5px;
+        padding-bottom: 5px;
+    }
+
+    mat-card{
+        width : 90%;
+        padding : 0px;
+        margin : 20px;
+    }
+    
+    .divChart{
+        margin: 0px;
+        padding: 0px;
+        font-size: 9px;
+        width:90%;
+        height:100px;
+    }
+    
+    canvas{
+        margin: 0px;
+        padding: 0px;
+        width: 90%;
+        height:100px;
+        font-size: 8px;
+    }
+    
+}

@@ -1,0 +1,43 @@
+
+<div class="container col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
+        <mat-card>
+            <h1 *ngIf=loanstatus>Congratulations...! {{ text }} , you are eligible for loan.</h1>
+            <h1 *ngIf=!loanstatus>Sorry....! {{ text }} , you are not eligible for loan.</h1>
+        </mat-card>
+    </div>
+    <div class="row">
+        <mat-card>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Prediction</th>
+                    <th>Accurancy(in percentage)</th>
+                </tr>
+                <tr>
+                    <td>Logistic Regression Model (Library)</td>
+                    <td>{{ result.logistic_lib === true ? 'YES' : 'NO' }}</td>
+                    <td>{{ result.Accuraccy_LRL }}</td>
+                <tr>
+                    <td>Logistic Regression Model (Hardcode)</td>
+                    <td>{{ result.logistic_hardcoded === true ? 'YES' : 'NO' }}</td>
+                    <td>{{ result.Accuraccy_LRHard }}</td>
+                </tr>
+                <tr>
+                    <td>Support Vector Model (Library)</td>
+                    <td>{{ result.svm_lib === true ? 'YES' : 'NO'}}</td>
+                    <td>{{ result.Accuraccy_SVM }}</td>
+                </tr>
+            </table>
+        </mat-card>
+    </div>
+    <div>
+        <div>
+            <div class="divChart">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                    [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>

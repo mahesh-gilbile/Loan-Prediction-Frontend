@@ -1,0 +1,141 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="container col-md-12 col-sm-12 col-xs-12" *ngIf="!isLoading">
+    <form [formGroup]="form" (submit)="onSaveData()">
+        <div class="row">
+            <mat-card>
+                <h1>Applicant Information</h1>
+                <div class="row">
+                    <mat-form-field class="left">
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" formControlName="applicantFirstName">
+                    </mat-form-field>
+                    <mat-form-field class="right">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" formControlName="applicantLastName">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="left">
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput type="text" formControlName="applicantMobileNumber">
+                    </mat-form-field>
+                    <mat-form-field class="right">
+                        <mat-label>Applicant Income</mat-label>
+                        <input matInput type="number" formControlName="applicantIncome">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="left">
+                        <mat-label>Gender</mat-label>
+                        <mat-select formControlName="applicantGender">
+                          <mat-option value="male">Male</mat-option>
+                          <mat-option value="female">Female</mat-option>
+                          <mat-option value="other">Other</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="right">
+                        <mat-label>Married Status</mat-label>
+                        <mat-select formControlName="applicantMarriedStatus">
+                          <mat-option value="yes">Married</mat-option>
+                          <mat-option value="no">Unmarried</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="left">
+                        <mat-label>Dependents</mat-label>
+                        <mat-select formControlName="applicantDependants">
+                            <mat-option value=0>0</mat-option>
+                            <mat-option value=1>1</mat-option>
+                            <mat-option value=2>2</mat-option>
+                            <mat-option value=3>3</mat-option>
+                            <mat-option value=3+>3 + </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="right">
+                        <mat-label>Education</mat-label>
+                        <mat-select formControlName="applicantEducation">
+                          <mat-option value="graduated">Graduate</mat-option>
+                          <mat-option value="nongraduated">Not Graduate</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </mat-card>
+        </div>
+        <div class="row">
+            <mat-card>
+                <h1>Co-applicant Information <mat-slide-toggle (change)="toggle($event)"></mat-slide-toggle> </h1>
+                    <div class="row" *ngIf="isChecked">
+                        <mat-form-field class="left">
+                            <mat-label>First Name</mat-label>
+                            <input matInput type="text" formControlName="coApplicantFirstName">
+                        </mat-form-field>
+                        <mat-form-field class="right">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput type="text" formControlName="coApplicantLastName">
+                        </mat-form-field>
+                    </div>
+                    <div class="row" *ngIf="isChecked">
+                        <mat-form-field class="left">
+                            <mat-label>Mobile Number</mat-label>
+                            <input matInput type="text" formControlName="coApplicantMobileNumber">
+                        </mat-form-field>
+                        <mat-form-field class="right">
+                            <mat-label>Co-applicant Income</mat-label>
+                            <input matInput type="text" formControlName="coApplicantIncome">
+                        </mat-form-field>
+                    </div>
+                    <div class="row" *ngIf="isChecked">
+                        <mat-form-field class="left">
+                            <mat-label>Gender</mat-label>
+                            <mat-select formControlName="coApplicantGender">
+                                <mat-option value='male'>Male</mat-option>
+                                <mat-option value='female'>Female</mat-option>
+                                <mat-option value='other'>Other</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="right">
+                            <mat-label>Relation with Applicant</mat-label>
+                            <mat-select formControlName="coApplicantRelationWithApplicant">
+                                <mat-option value="father">Father</mat-option>
+                                <mat-option value="mother">Mother</mat-option>
+                                <mat-option value="sister">Sister</mat-option>
+                                <mat-option value="brother">Brother</mat-option>
+                                <mat-option value="wife">Wife</mat-option>
+                                <mat-option value="daughter">Daughter</mat-option>
+                                <mat-option value="son">Son</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+            </mat-card>
+        </div>
+        <div class="row">
+            <mat-card>
+                <h1>Loan Information</h1>
+                <div class="row">
+                    <mat-form-field class="left">
+                        <mat-label>Total Income</mat-label>
+                        <input matInput type="text" disabled=true value=" {{ +form.value.applicantIncome + +form.value.coApplicantIncome}}">
+                    </mat-form-field>
+                    <mat-form-field class="right">
+                        <mat-label>Loan Amount</mat-label>
+                        <input matInput type="number" formControlName="loanAmount">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="left">
+                        <mat-label>Loan Amount Term (in month) </mat-label>
+                        <input matInput type="number" formControlName="loanAmountTerm">
+                    </mat-form-field>
+                    <mat-form-field class="right">
+                        <mat-label>Credit Score</mat-label>
+                        <input matInput type="number" formControlName="creditScore">
+                    </mat-form-field>
+                </div>
+            </mat-card>
+        </div>
+        <div class="row">
+            <button mat-flat-button color="primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
